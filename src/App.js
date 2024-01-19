@@ -5,7 +5,7 @@ import CreateContact from "./CreateContact";
 import {
   Route,
   Routes,
-  BrowserRouter as Router,
+  HashRouter as Router,
   Navigate,
 } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename= "/contact-app">
       <Routes>
         <Route
           path="/"
