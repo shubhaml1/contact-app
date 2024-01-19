@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import ListContacts from "./ListContacts";
 import * as ContactsAPI from "./utils/ContactsAPI";
 import CreateContact from "./CreateContact";
-import {
-  Route,
-  Routes,
-  HashRouter as Router,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
