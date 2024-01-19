@@ -1,7 +1,6 @@
 const api = process.env.REACT_APP_CONTACTS_API_URL || "http://localhost:5001";
 console.log(api);
 let token = localStorage.token;
-
 if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
 
 const headers = {
@@ -11,23 +10,23 @@ const headers = {
 
 let contacts = [
   {
-    id: "Shubham",
-    name: "Shubham Singh",
-    handle: "shubham007",
-    avatarURL: "./avatars/shubham.jpg",
+    id: "karen",
+    name: "Karen Isgrigg",
+    handle: "karen_isgrigg",
+    avatarURL: "./avatars/karen.jpg"
   },
   {
-    id: "Satyam",
-    name: "Satyam Shukla",
-    handle: "shuklaji962",
-    avatarURL: "./avatars/richard.jpg",
+    id: "richard",
+    name: "Richard Kalehoff",
+    handle: "richardkalehoff",
+    avatarURL: "./avatars/richard.jpg"
   },
   {
     id: "tyler",
     name: "Tyler McGinnis",
     handle: "tylermcginnis",
-    avatarURL: "./avatars/tyler.jpg",
-  },
+    avatarURL: "./avatars/tyler.jpg"
+  }
 ];
 
 export const getAll_fetch = () =>

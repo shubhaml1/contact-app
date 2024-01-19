@@ -21,7 +21,10 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
     : contacts;
 
   return (
+    
     <div className="list-contacts">
+      <style>
+    </style>
       <div className="list-contacts-top">
         <input
           className="search-contacts"
