@@ -19,7 +19,7 @@ let contacts = [
     id: "richard",
     name: "Richard Kalehoff",
     handle: "richardkalehoff",
-    avatarURL: "./avatars/richard.jpg"
+    avatarURL: "/contact-app/avatars/richard.jpg"
   },
   {
     id: "tyler",
