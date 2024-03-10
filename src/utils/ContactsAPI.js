@@ -13,19 +13,19 @@ let contacts = [
     id: "karen",
     name: "Karen Isgrigg",
     handle: "karen_isgrigg",
-    avatarURL: "./avatars/karen.jpg"
+    avatarURL: "contact-app/avatars/karen.jpg"
   },
   {
     id: "richard",
     name: "Richard Kalehoff",
     handle: "richardkalehoff",
-    avatarURL: "./avatars/richard.jpg"
+    avatarURL: "contact-app/avatars/richard.jpg"
   },
   {
     id: "tyler",
     name: "Tyler McGinnis",
     handle: "tylermcginnis",
-    avatarURL: "./avatars/tyler.jpg"
+    avatarURL: "contact-app/avatars/tyler.jpg"
   }
 ];
 

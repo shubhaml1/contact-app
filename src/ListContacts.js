@@ -1,3 +1,4 @@
+//home-page
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -23,8 +24,6 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
   return (
     
     <div className="list-contacts">
-      <style>
-    </style>
       <div className="list-contacts-top">
         <input
           className="search-contacts"

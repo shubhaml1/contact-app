@@ -1,16 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-const readFileAsDataURL = (file) =>
-  new Promise((resolve) => {
-    const reader = new FileReader();
+// const readFileAsDataURL = (file) =>
+//   new Promise((resolve) => {
+//     const reader = new FileReader();
 
-    reader.onload = (event) => {
-      resolve(event.target.result);
-    };
+//     reader.onload = (event) => {
+//       resolve(event.target.result);
+//     };
 
-    reader.readAsDataURL(file);
-  });
+//     reader.readAsDataURL(file);
+//   });
 
 const resizeImage = (imageURL, canvas, maxHeight) =>
   new Promise((resolve) => {
@@ -44,15 +44,17 @@ const ImageInput = ({ className, name, maxHeight }) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && file.type.match(/^image\//)) {
-      readFileAsDataURL(file).then((originalURL) => {
-        resizeImage(originalURL, canvasRef.current, maxHeight).then((url) => {
-          setValue(url);
-        });
+      const originalURL = URL.createObjectURL(file);
+  
+      resizeImage(originalURL, canvasRef.current, maxHeight).then((url) => {
+        setValue(url);
       });
     } else {
       setValue("");
+      // Provide user feedback for invalid file type if needed
     }
   };
+  
 
   const handleFormReset = () => {
     setValue("");
@@ -60,11 +62,10 @@ const ImageInput = ({ className, name, maxHeight }) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
     const fileInputForm = fileInputRef.current.form;
-
-    canvas.width = 0;
-    canvas.height = 0;
-
     fileInputForm.addEventListener("reset", handleFormReset);
 
     return () => {
@@ -74,14 +75,13 @@ const ImageInput = ({ className, name, maxHeight }) => {
 
   const style = {
     position: "relative",
+    ...(value && {
+      backgroundImage: `url("${value}")`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+    }),
   };
-
-  if (value) {
-    style.backgroundImage = `url("${value}")`;
-    style.backgroundRepeat = "no-repeat";
-    style.backgroundPosition = "center";
-    style.backgroundSize = "cover";
-  }
 
   return (
     <div className={className} style={style}>
@@ -109,6 +109,12 @@ ImageInput.propTypes = {
   className: PropTypes.string,
   name: PropTypes.string,
   maxHeight: PropTypes.number,
+};
+
+ImageInput.defaultProps = {
+  className: "",
+  name: "image",
+  maxHeight: 300,
 };
 
 export default ImageInput;
