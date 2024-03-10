@@ -1,4 +1,4 @@
-const api = process.env.REACT_APP_CONTACTS_API_URL || "http://localhost:5001";
+const api = process.env.REACT_APP_CONTACTS_API_URL || "http://localhost:3000/contact-app";
 console.log(api);
 let token = localStorage.token;
 if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
@@ -13,19 +13,19 @@ let contacts = [
     id: "karen",
     name: "Karen Isgrigg",
     handle: "karen_isgrigg",
-    avatarURL: "contact-app/avatars/karen.jpg"
+    avatarURL: "/contact-app/avatars/karen.jpg"
   },
   {
     id: "richard",
     name: "Richard Kalehoff",
     handle: "richardkalehoff",
-    avatarURL: "contact-app/avatars/richard.jpg"
+    avatarURL: "./avatars/richard.jpg"
   },
   {
     id: "tyler",
     name: "Tyler McGinnis",
     handle: "tylermcginnis",
-    avatarURL: "contact-app/avatars/tyler.jpg"
+    avatarURL: "./avatars/tyler.jpg"
   }
 ];
 

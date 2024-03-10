@@ -33,7 +33,7 @@ const App = () => {
   };
 
   return (
-    <Router basename= "/contact-app">
+    <Router basename="/contact-app" >
       <Routes>
         <Route
           path="/"
