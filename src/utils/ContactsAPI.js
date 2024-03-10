@@ -25,7 +25,7 @@ let contacts = [
     id: "tyler",
     name: "Tyler McGinnis",
     handle: "tylermcginnis",
-    avatarURL: "./avatars/tyler.jpg"
+    avatarURL: "/contact-app/avatars/tyler.jpg"
   }
 ];
 
