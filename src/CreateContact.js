@@ -26,7 +26,7 @@ const CreateContact = ({ onCreateContact }) => {
         <ImageInput
           className="create-contact-avatar-input"
           name="avatarURL"
-          maxHeight={64}
+          maxHeight={300}
        
         />
         <div className="create-contact-details">
