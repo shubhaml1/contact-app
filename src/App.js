@@ -9,9 +9,10 @@ const App = () => {
   ContactsAPI.getAllContacts().then((contacts) => {
       dbContacts = contacts;
   });
+
   const [contacts, setContacts] = useState(
     () => { const savedContact = localStorage.getItem('savedContact');
-    return savedContact !== null ? JSON.parse(savedContact):dbContacts
+    return savedContact !== null ? JSON.parse(savedContact):dbContacts;
     });
 console.log(contacts);
 
@@ -19,11 +20,11 @@ console.log(contacts);
     localStorage.setItem('savedContact', JSON.stringify(contacts));
   }, [contacts]);
 
-//   useEffect(() => {
-    // ContactsAPI.getAllContacts().then((contacts) => {
-    //   setContacts(contacts);
-    // });
-//   }, []);
+  // useEffect(() => {
+  //   ContactsAPI.getAllContacts().then((contacts) => {
+  //     setContacts(contacts);
+  //   });
+  // }, []);
 
   const removeContact = (contact) => {
     ContactsAPI.remove(contact)
