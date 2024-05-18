@@ -5,13 +5,25 @@ import CreateContact from "./CreateContact";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
-  const [contacts, setContacts] = useState([]);
+  let dbContacts;
+  ContactsAPI.getAllContacts().then((contacts) => {
+      dbContacts = contacts;
+  });
+  const [contacts, setContacts] = useState(
+    () => { const savedContact = localStorage.getItem('savedContact');
+    return savedContact !== null ? JSON.parse(savedContact):dbContacts
+    });
+console.log(contacts);
 
   useEffect(() => {
-    ContactsAPI.getAllContacts().then((contacts) => {
-      setContacts(contacts);
-    });
-  }, []);
+    localStorage.setItem('savedContact', JSON.stringify(contacts));
+  }, [contacts]);
+
+//   useEffect(() => {
+    // ContactsAPI.getAllContacts().then((contacts) => {
+    //   setContacts(contacts);
+    // });
+//   }, []);
 
   const removeContact = (contact) => {
     ContactsAPI.remove(contact)
@@ -20,6 +32,7 @@ const App = () => {
         setContacts((prevContacts) =>
           prevContacts.filter((c) => c.id !== removedContact.id)
         );
+        localStorage.setItem('savedScore', JSON.stringify(contacts))
       })
       .catch((error) => console.error("Error removing contact:", error));
   };
@@ -28,7 +41,6 @@ const App = () => {
     console.log(contact);
     ContactsAPI.create(contact).then((newContact) => {
       setContacts((prevContacts) => [...prevContacts, newContact]);
-      console.log("after set contact", contacts)
     });
   };
 

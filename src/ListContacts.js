@@ -7,7 +7,7 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
   const [query, setQuery] = useState("");
 
   const updateQuery = (e) => {
-    const newQuery = e.target.value.trim();
+    const newQuery = e.target.value;
     setQuery(newQuery);
   };
 
