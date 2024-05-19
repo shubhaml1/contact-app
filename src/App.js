@@ -14,7 +14,7 @@ const App = () => {
     () => { const savedContact = localStorage.getItem('savedContact');
     return savedContact !== null ? JSON.parse(savedContact):dbContacts;
     });
-console.log(contacts);
+console.log(dbContacts);
 
   useEffect(() => {
     localStorage.setItem('savedContact', JSON.stringify(contacts));
